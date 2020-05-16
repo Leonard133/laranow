@@ -28,7 +28,7 @@ class PackageCommand extends Command
     public function handle()
     {
         // Publish laravel debugbar configuration
-        \Artisan::call('vendor:publish --provider=\"Barryvdh\Debugbar\ServiceProvider\"');
+        copy(base_path('vendor/barryvdh/laravel-debugbar/config/') . 'debugbar.php', config_path('debugbar.php'));
         $this->info('Added laravel debugbar configuration');
     }
 }
