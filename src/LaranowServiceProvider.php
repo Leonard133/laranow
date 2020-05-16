@@ -2,7 +2,6 @@
 
 namespace Leonard133\Laranow;
 
-use App\Console\Commands\PackageCommand;
 use Illuminate\Support\ServiceProvider;
 
 class LaranowServiceProvider extends ServiceProvider

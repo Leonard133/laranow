@@ -11,7 +11,7 @@ class PackageCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'laranow:packages';
 
     /**
      * The console command description.
