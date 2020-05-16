@@ -35,15 +35,20 @@ class PackageCommand extends Command
         if (!file_exists(config_path('debugbar.php')) && !in_array('debugbar', $excluded)) {
             copy(base_path('vendor/barryvdh/laravel-debugbar/config/debugbar.php'), config_path('debugbar.php'));
             file_put_contents(config_path('debugbar.php'), str_replace("false, // Display Laravel authentication status", "true, // Display Laravel authentication status", file_get_contents(config_path('debugbar.php'))));
-            $this->info('Done laravel debugbar setup');
+            $this->info('Done setup debugbar');
         }
 
-        // Setup laravel telescope
-        if (!file_exists(config_path('telescope.php')) && !in_array('debugbar', $excluded)) {
-//            copy(base_path('vendor/laravel/telescope/config/telescope.php'), config_path('telescope.php'));
+        // Setup telescope
+        if (!file_exists(config_path('telescope.php')) && !in_array('telescope', $excluded)) {
             \Artisan::call('telescope:install');
             \Artisan::call('telescope:publish');
-            $this->info('Done laravel telescope setup');
+            $this->info('Done setup telescope');
+        }
+
+        // Setup permission
+        if (!file_exists(config_path('permission.php')) && !in_array('permission', $excluded)) {
+            \Artisan::call('vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"');
+            $this->info('Done setup spatie permission');
         }
 
         $this->info('Every packages setup done.');
