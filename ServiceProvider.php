@@ -2,9 +2,9 @@
 
 namespace Leonard133\Laranow\ServiceProvider;
 
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider as LaraServiceProvider;
 
-class LaraNowServiceProvider extends ServiceProvider
+class ServiceProvider extends LaraServiceProvider
 {
     /**
      * Register services.
