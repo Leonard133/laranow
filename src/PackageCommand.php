@@ -3,7 +3,6 @@
 namespace Leonard133\Laranow;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Artisan;
 
 class PackageCommand extends Command
 {
@@ -29,6 +28,7 @@ class PackageCommand extends Command
     public function handle()
     {
         // Publish laravel debugbar configuration
-        Artisan::call('vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"');
+        \Artisan::call('vendor:publish --provider=\"Barryvdh\Debugbar\ServiceProvider\"');
+        $this->info('Added laravel debugbar configuration');
     }
 }
