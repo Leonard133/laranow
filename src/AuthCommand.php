@@ -11,14 +11,14 @@ class AuthCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'laranow:auth';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Add multiple guard auth';
 
     /**
      * Create a new command instance.

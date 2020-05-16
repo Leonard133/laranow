@@ -3,6 +3,7 @@
 namespace Leonard133\Laranow;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
 
 class PackageCommand extends Command
 {
@@ -18,17 +19,7 @@ class PackageCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
-
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    protected $description = 'Add most needed packages';
 
     /**
      * Execute the console command.
@@ -37,6 +28,7 @@ class PackageCommand extends Command
      */
     public function handle()
     {
-        //
+        // Publish laravel debugbar configuration
+        Artisan::call('vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"');
     }
 }
