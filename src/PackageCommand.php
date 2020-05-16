@@ -47,7 +47,9 @@ class PackageCommand extends Command
 
         // Setup permission
         if (!file_exists(config_path('permission.php')) && !in_array('permission', $excluded)) {
-            \Artisan::call('vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"');
+            $timestamp = date('Y_m_d_His');
+            copy(base_path('vendor/spatie/laravel-permission/config/permission.php'), config_path('permission.php'));
+            copy(base_path('vendor/spatie/laravel-permission/database/migrations/create_permission_tables.php.stub'), database_path('migrations/' . $timestamp . '_create_permission_tables.php'));
             $this->info('Done setup spatie permission');
         }
 
