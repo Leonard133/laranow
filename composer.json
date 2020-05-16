@@ -1,5 +1,5 @@
 {
-    "name": "leonard133/laranow",
+    "name": "Laranow",
     "description": "Instant setup to new laravel project",
     "type": "project",
     "license": "MIT",
@@ -15,14 +15,14 @@
             "Leonard133\\Laranow\\": "src/"
         }
     },
-    "require": {},
-    "require-dev": {
+    "require": {
         "barryvdh/laravel-debugbar": "^3.3"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://gitlab.com/francis01/greetr"
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Leonard133\\Laranow\\ServiceProvider"
+            ]
         }
-    ]
+    }
 }

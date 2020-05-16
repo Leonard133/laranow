@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Leonard133\Laranow\ServiceProvider;
 
 use Illuminate\Support\ServiceProvider;
 
