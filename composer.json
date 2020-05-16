@@ -16,7 +16,8 @@
         }
     },
     "require": {
-        "barryvdh/laravel-debugbar": "^3.3"
+        "barryvdh/laravel-debugbar": "^3.3",
+        "laravel/telescope": "^3.5"
     },
     "extra": {
         "laravel": {
