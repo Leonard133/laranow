@@ -1,0 +1,28 @@
+{
+    "name": "leonard133/laranow",
+    "description": "Instant setup to new laravel project",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Leonard133",
+            "email": "leonard13396@hotmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Leonard133\\Laranow\\": "src/"
+        }
+    },
+    "require": {},
+    "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.3"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://gitlab.com/francis01/greetr"
+        }
+    ]
+}
