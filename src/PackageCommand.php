@@ -48,11 +48,11 @@ class PackageCommand extends Command
             file_put_contents(config_path('debugbar.php'), str_replace("false, // Display Laravel authentication status", "true, // Display Laravel authentication status", file_get_contents(config_path('debugbar.php'))));
             $bar->advance();
             sleep(1);
-            $bar->setMessage('Done setup debugbar');
+            $bar->setMessage('Done debugbar setup');
             $bar->advance();
             sleep(1);
         } else {
-            $bar->setMessage('Skipping setup debugbar');
+            $bar->setMessage('Skip debugbar setup');
             $bar->advance(3);
             sleep(1);
         }
@@ -70,11 +70,11 @@ class PackageCommand extends Command
             $this->registerTelescopeServiceProvider();
             $bar->advance();
             sleep(1);
-            $bar->setMessage('Done setup telescope');
+            $bar->setMessage('Done telescope setup');
             $bar->advance();
             sleep(1);
         } else {
-            $bar->setMessage('Skipping setup telescope');
+            $bar->setMessage('Skip telescope setup');
             $bar->advance(3);
             sleep(1);
         }
@@ -90,11 +90,11 @@ class PackageCommand extends Command
             copy(base_path('vendor/spatie/laravel-permission/database/migrations/create_permission_tables.php.stub'), database_path('migrations/' . date('Y_m_d') . '_000000_create_permission_tables.php'));
             $bar->advance();
             sleep(1);
-            $bar->setMessage('Done setup spatie permission');
+            $bar->setMessage('Done spatie permission setup');
             $bar->advance();
             sleep(1);
         }  else {
-            $bar->setMessage('Skipping setup permission');
+            $bar->setMessage('Skip permission setup');
             $bar->advance(3);
             sleep(1);
         }
@@ -109,11 +109,11 @@ class PackageCommand extends Command
             copy(base_path('vendor/yajra/laravel-datatables-oracle/src/config/datatables.php'), config_path('datatables.php'));
             $bar->advance();
             sleep(1);
-            $bar->setMessage('Done setup datatable');
+            $bar->setMessage('Done datatable setup');
             $bar->advance();
             sleep(1);
         }  else {
-            $bar->setMessage('Skipping setup datatable');
+            $bar->setMessage('Skip datatable setup');
             $bar->advance(3);
             sleep(1);
         }
@@ -129,11 +129,11 @@ class PackageCommand extends Command
             \File::copyDirectory(base_path('vendor/yajra/laravel-datatables-html/src/resources/views'), base_path('/resources/views/vendor/datatables'));
             $bar->advance();
             sleep(1);
-            $bar->setMessage('Done setup datatable html');
+            $bar->setMessage('Done datatable html setup');
             $bar->advance();
             sleep(1);
         }  else {
-            $bar->setMessage('Skipping setup datatable html');
+            $bar->setMessage('Skip datatable html setup');
             $bar->advance(3);
             sleep(1);
         }
@@ -150,19 +150,22 @@ class PackageCommand extends Command
             \File::copyDirectory(base_path('vendor/yajra/laravel-datatables-buttons/src/resources/views'), base_path('/resources/views/vendor/datatables'));
             $bar->advance();
             sleep(1);
-            $bar->setMessage('Done setup datatable button');
+            $bar->setMessage('Done datatable button setup');
             $bar->advance();
             sleep(1);
         }  else {
-            $bar->setMessage('Skipping setup datatable button');
+            $bar->setMessage('Skipping datatable button setup');
             $bar->advance(3);
             sleep(1);
         }
 
         // Setup datatable
         exec('composer dump-autoload -o --quiet');
-        $bar->setMessage('Every packages setup done.');
+        $bar->setMessage('All packages complete installed. Happy Coding~');
         $bar->finish();
+        $this->callSilent('cache:clear');
+        $this->callSilent('config:clear');
+        $this->callSilent('route:clear');
         $this->output->newLine();
         sleep(1);
     }
