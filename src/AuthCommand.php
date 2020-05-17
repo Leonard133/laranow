@@ -11,7 +11,7 @@ class AuthCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'laranow:auth';
+    protected $signature = 'add:auth';
 
     /**
      * The console command description.
