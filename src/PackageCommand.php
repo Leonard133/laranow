@@ -61,8 +61,8 @@ class PackageCommand extends Command
             $this->info('Installing permission...');
             exec('composer require spatie/laravel-permission --quiet');
             $this->info('Configuring permission...');
-            copy(base_path('vendor/spatie/laravel-spatie/config/permission.php'), config_path('permission.php'));
-            copy(base_path('vendor/spatie/laravel-spatie/database/migrations/create_permission_tables.php.stub'), config_path(date('Y_m_d_His') . '_create_permission_tables.php'));
+            copy(base_path('vendor/spatie/laravel-permission/config/permission.php'), config_path('permission.php'));
+            copy(base_path('vendor/spatie/laravel-permission/database/migrations/create_permission_tables.php.stub'), config_path(date('Y_m_d_His') . '_create_permission_tables.php'));
             $this->info('Done setup spatie permission');
         }
 
