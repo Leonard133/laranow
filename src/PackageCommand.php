@@ -73,7 +73,7 @@ class PackageCommand extends Command
         //     $this->info('Done setup spatie permission');
         // }
         $this->call('package:discover', ['--ansi']);
-        $this->call('optiome');
+        $this->call('optimize');
         $this->info('Every packages setup done.');
     }
 
