@@ -95,7 +95,7 @@ class PackageCommand extends Command
             \File::copyDirectory(base_path('vendor/yajra/laravel-datatables-buttons/resources/views'), base_path('/resources/views/vendor/datatables'));
             $this->info('Done setup datatable button');
         }
-1
+
         // Setup datatable
         exec('composer dump-autoload -o --quiet');
         $this->info('Every packages setup done.');
