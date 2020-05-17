@@ -67,13 +67,13 @@ class PackageCommand extends Command
         }
 
         // Setup datatable
-        // if (!file_exists(config_path('permission.php')) && !in_array('permission', $excluded)) {
-        //     $timestamp = date('Y_m_d_His');
-        //     copy(base_path('vendor/spatie/laravel-permission/config/permission.php'), config_path('permission.php'));
-        //     copy(base_path('vendor/spatie/laravel-permission/database/migrations/create_permission_tables.php.stub'), database_path('migrations/' . $timestamp . '_create_permission_tables.php'));
-        //     $this->info('Done setup spatie permission');
-        // }
-        $this->call('package:discover', ['--ansi']);
+        if (!file_exists(config_path('permission.php')) && !in_array('permission', $excluded)) {
+            $timestamp = date('Y_m_d_His');
+            copy(base_path('vendor/spatie/laravel-permission/config/permission.php'), config_path('permission.php'));
+            copy(base_path('vendor/spatie/laravel-permission/database/migrations/create_permission_tables.php.stub'), database_path('migrations/' . $timestamp . '_create_permission_tables.php'));
+            $this->info('Done setup spatie permission');
+        }
+        exec('composer dump-autoload -o');
         $this->call('optimize');
         $this->info('Every packages setup done.');
     }
