@@ -24,17 +24,19 @@ Able to auto create the guard for user and admin. (Coming soon)
 `-I | --include - To include additional packages`
 
 Default
-- Laravel UI
-- Laravel Debugbar
-- Laravel Telescope
-- Laravel Spatie Permission
-- Laravel Datatable
+- Laravel UI (ui)
+- Laravel Debugbar (debugbar)
+- Laravel Telescope (telescope)
+- Laravel Spatie Permission (permission)
+- Laravel Datatable Core (datatable)
+- Laravel Datatable Html (datatable-html)
+- Laravel Datatable Buttons (datatable-button)
 
 Additional
-- Laravel Horizon
-- Laravel Backup
-- Laravel Slack Notification
-- Laravel Excel
-- Laravel Passport
+- Laravel Horizon (horizon)
+- Laravel Backup (backup)
+- Laravel Slack Notification (slack)
+- Laravel Excel (excel)
+- Laravel Passport (passport)
 
 ---

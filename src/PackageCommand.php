@@ -66,6 +66,36 @@ class PackageCommand extends Command
             $this->info('Done setup spatie permission');
         }
 
+        // Setup core datable
+        if (!file_exists(config_path('datatables.php')) && !in_array('datatable', $excluded)) {
+            $this->info('Installing datatable...');
+            exec('composer require yajra/laravel-datatables-oracle --quiet');
+            $this->info('Configuring datatable...');
+            copy(base_path('vendor/yajra/laravel-datatables/config/datatables.php'), config_path('datatables.php'));
+            $this->info('Done setup datatable');
+        }
+
+        // Setup html datable
+        if (!file_exists(config_path('datatables.php')) && !in_array('datatable-html', $excluded)) {
+            $this->info('Installing datatable html...');
+            exec('composer require yajra/laravel-datatables-html --quiet');
+            $this->info('Configuring datatable html...');
+            copy(base_path('vendor/yajra/laravel-datatables-html/resources/config/config.php'), config_path('datatables-html.php'));
+            \File::copyDirectory(base_path('vendor/yajra/laravel-datatables-html/resources/views'), base_path('/resources/views/vendor/datatables'));
+            $this->info('Done setup datatable html');
+        }
+
+        // Setup button datable
+        if (!file_exists(config_path('datatables.php')) && !in_array('datatable-button', $excluded)) {
+            $this->info('Installing datatable button...');
+            exec('composer require yajra/laravel-datatables-buttons --quiet');
+            $this->info('Configuring datatable button...');
+            copy(base_path('vendor/yajra/laravel-datatables-buttons/config/config.php'), config_path('datatables-buttons.php'));
+            copy(base_path('vendor/yajra/laravel-datatables-buttons/resources/assets/buttons.server-side.js'), public_path('vendor/datatables/buttons.server-side.js'));
+            \File::copyDirectory(base_path('vendor/yajra/laravel-datatables-buttons/resources/views'), base_path('/resources/views/vendor/datatables'));
+            $this->info('Done setup datatable button');
+        }
+1
         // Setup datatable
         exec('composer dump-autoload -o --quiet');
         $this->info('Every packages setup done.');
