@@ -11,7 +11,7 @@ class LaranowCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'laranow
+    protected $signature = 'add
                     { type : The preset type (t1, t2, t3) }
                     { --auth : Multiple auth }
                     { --packages : Add needed packages }
@@ -35,7 +35,7 @@ class LaranowCommand extends Command
             return call_user_func(static::$macros[$this->argument('type')], $this);
         }
 
-        if (! in_array($this->argument('type'), ['t1'])) {
+        if (!in_array($this->argument('type'), ['t1'])) {
             throw new \InvalidArgumentException('Invalid preset.');
         }
 
