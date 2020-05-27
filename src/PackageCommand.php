@@ -34,9 +34,36 @@ class PackageCommand extends Command
         $excluded = (\Str::contains($exclude, ',')) ? explode(',', $exclude) : [$exclude];
         $included = (\Str::contains($include, ',')) ? explode(',', $include) : [$include];
 
-        $totalPackages = (6*3);
+        $totalPackages = (6 * 3) - (count($excluded) * 3) + (count($included) * 3);
         $bar = $this->output->createProgressBar($totalPackages);
         $bar->setFormat("%message% \n%current%/%max%[%bar%] - %percent:3s%%");
+
+        $this->setupDebugbar($bar, $excluded);
+
+        $this->setupTelescope($bar, $excluded);
+
+        $this->setupPermission($bar, $excluded);
+
+        $this->setupDatatable($bar, $excluded);
+
+        $this->setupDatatableHtml($bar, $excluded);
+
+        $this->setupDatatableButton($bar, $excluded);
+
+        // Finishing Setup
+        exec('composer dump-autoload -o --quiet');
+        $bar->setMessage('All packages complete installed. Happy Coding~');
+        $bar->finish();
+        $this->callSilent('cache:clear');
+        $this->callSilent('config:clear');
+        $this->callSilent('route:clear');
+        $this->callSilent('ui:auth');
+        $this->output->newLine();
+        sleep(1);
+    }
+
+    protected function setupDebugbar($bar, $excluded)
+    {
         // Setup laravel debugbar configuration
         if (!file_exists(config_path('debugbar.php')) && !in_array('debugbar', $excluded)) {
             $bar->setMessage('Installing debugbar...', 'message');
@@ -51,12 +78,15 @@ class PackageCommand extends Command
             $bar->setMessage('Done debugbar setup');
             $bar->advance();
             sleep(1);
-        } else {
+        } elseif (file_exists(config_path('debugbar.php')) && !in_array('debugbar', $excluded)) {
             $bar->setMessage('Skip debugbar setup');
             $bar->advance(3);
             sleep(1);
         }
+    }
 
+    protected function setupTelescope($bar, $excluded)
+    {
         // Setup telescope
         if (!file_exists(config_path('telescope.php')) && !in_array('telescope', $excluded)) {
             $bar->setMessage('Installing telescope...');
@@ -73,12 +103,15 @@ class PackageCommand extends Command
             $bar->setMessage('Done telescope setup');
             $bar->advance();
             sleep(1);
-        } else {
+        } elseif (file_exists(config_path('telescope.php')) && !in_array('telescope', $excluded)) {
             $bar->setMessage('Skip telescope setup');
             $bar->advance(3);
             sleep(1);
         }
+    }
 
+    protected function setupPermission($bar, $excluded)
+    {
         // Setup permission
         if (!file_exists(config_path('permission.php')) && !in_array('permission', $excluded)) {
             $bar->setMessage('Installing permission...');
@@ -93,12 +126,15 @@ class PackageCommand extends Command
             $bar->setMessage('Done spatie permission setup');
             $bar->advance();
             sleep(1);
-        }  else {
+        } elseif (file_exists(config_path('permission.php')) && !in_array('permission', $excluded)) {
             $bar->setMessage('Skip permission setup');
             $bar->advance(3);
             sleep(1);
         }
+    }
 
+    protected function setupDatatable($bar, $excluded)
+    {
         // Setup core datable
         if (!file_exists(config_path('datatables.php')) && !in_array('datatable', $excluded)) {
             $bar->setMessage('Installing datatable...');
@@ -112,12 +148,15 @@ class PackageCommand extends Command
             $bar->setMessage('Done datatable setup');
             $bar->advance();
             sleep(1);
-        }  else {
+        } elseif (file_exists(config_path('datatables.php')) && !in_array('datatable', $excluded)) {
             $bar->setMessage('Skip datatable setup');
             $bar->advance(3);
             sleep(1);
         }
+    }
 
+    protected function setupDatatableHtml($bar, $excluded)
+    {
         // Setup html datable
         if (!file_exists(config_path('datatables-html.php')) && !in_array('datatable-html', $excluded)) {
             $bar->setMessage('Installing datatable html...');
@@ -132,12 +171,15 @@ class PackageCommand extends Command
             $bar->setMessage('Done datatable html setup');
             $bar->advance();
             sleep(1);
-        }  else {
+        } elseif (file_exists(config_path('datatables-html.php')) && !in_array('datatable-html', $excluded)) {
             $bar->setMessage('Skip datatable html setup');
             $bar->advance(3);
             sleep(1);
         }
+    }
 
+    protected function setupDatatableButton($bar, $excluded)
+    {
         // Setup button datable
         if (!file_exists(config_path('datatables-buttons.php')) && !in_array('datatable-button', $excluded)) {
             $bar->setMessage('Installing datatable button...');
@@ -153,21 +195,11 @@ class PackageCommand extends Command
             $bar->setMessage('Done datatable button setup');
             $bar->advance();
             sleep(1);
-        }  else {
+        } elseif (file_exists(config_path('datatables-buttons.php')) && !in_array('datatable-button', $excluded)) {
             $bar->setMessage('Skipping datatable button setup');
             $bar->advance(3);
             sleep(1);
         }
-
-        // Setup datatable
-        exec('composer dump-autoload -o --quiet');
-        $bar->setMessage('All packages complete installed. Happy Coding~');
-        $bar->finish();
-        $this->callSilent('cache:clear');
-        $this->callSilent('config:clear');
-        $this->callSilent('route:clear');
-        $this->output->newLine();
-        sleep(1);
     }
 
     protected function registerTelescopeServiceProvider()

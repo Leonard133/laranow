@@ -9,6 +9,10 @@
             "email": "leonard13396@hotmail.com"
         }
     ],
+    "require": {
+        "laravel/ui": "^2.0",
+        "laravel-shift/blueprint": "^1.12"
+    },
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {

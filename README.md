@@ -1,7 +1,16 @@
 # This is a package to setup laravel for what I needed.
 
+## Installation
+`composer require leonard133/laranow`
+
+`php artisan migrate`
+
 ## Auto-generate resource controller, model and so on.
-Coming soon
+`php artisan add:blueprint model1 model2 model3`
+
+`-F | --force - To force overwrite the YAML file`
+
+`-A | --api  - To create api resources, controller in API folder`
 
 ---
 
@@ -11,7 +20,7 @@ Coming soon.
 ---
 
 ## Authentication
-Able to auto create the guard for user and admin. (Coming soon)
+Able to automatically create multiple guard and defined route in a different file. (Coming soon)
 
 ---
 
@@ -24,7 +33,7 @@ Able to auto create the guard for user and admin. (Coming soon)
 `-I | --include - To include additional packages`
 
 Default
-- Laravel UI (ui)
+- Laravel UI (ui) (unable to exclude)
 - Laravel Debugbar (debugbar)
 - Laravel Telescope (telescope)
 - Laravel Spatie Permission (permission)
@@ -40,3 +49,11 @@ Additional
 - Laravel Passport (passport)
 
 ---
+
+## Credits
+- [laravel-shift/blueprint](https://github.com/laravel-shift/blueprint)
+- [laravel/ui](https://github.com/laravel/ui)
+- [barryvdh/laravel-debugbar](https://github.com/barryvdh/laravel-debugbar)
+- [laravel/telescope](https://github.com/laravel/telescope)
+- [spatie/laravel-permission](https://github.com/spatie/laravel-permission)
+- [yajra/laravel-datatables](https://github.com/yajra/laravel-datatables)

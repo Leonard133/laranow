@@ -11,7 +11,7 @@ class AuthCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'add:auth';
+    protected $signature = 'add:guard';
 
     /**
      * The console command description.

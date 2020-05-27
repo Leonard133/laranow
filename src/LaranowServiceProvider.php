@@ -2,7 +2,10 @@
 
 namespace Leonard133\Laranow;
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Ui\UiCommand;
+use Leonard133\Laranow\Presets\Template1;
 
 class LaranowServiceProvider extends ServiceProvider
 {
@@ -16,7 +19,7 @@ class LaranowServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 AuthCommand::class,
-                LaranowCommand::class,
+                PrintCommand::class,
                 PackageCommand::class,
             ]);
         }
@@ -29,5 +32,14 @@ class LaranowServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        UiCommand::macro('landing:t1', function () {
+            Artisan::call('ui:auth', ['--force' => true]);
+            Template1::install();
+        });
+
+        UiCommand::macro('admin:t1', function () {
+            Artisan::call('ui:auth', ['--force' => true]);
+            Template1::install();
+        });
     }
 }
