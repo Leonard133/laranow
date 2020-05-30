@@ -40,7 +40,6 @@ Default
 - Laravel Datatable Core (datatable)
 - Laravel Datatable Html (datatable-html)
 - Laravel Datatable Buttons (datatable-button)
-
 Additional
 - Laravel Horizon (horizon)
 - Laravel Backup (backup)
